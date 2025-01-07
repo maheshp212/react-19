@@ -1,0 +1,10 @@
+header{
+    background-color: #6F323C;
+    color: white;
+    text-align: center;;
+    padding: 10px;
+    font-style: italic;
+  }
+  header h1{
+    margin: 0;
+  }
