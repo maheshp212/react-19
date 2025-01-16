@@ -1,7 +1,9 @@
+import { useState } from "react";
 import "./expenses.css";
 
 function Expenses(){
 
+    const [name, setName] = useState('');
     let data = [
         { date:'2025-01-23', name:'car Insurance', amount: 3500},
         { date:'2025-02-18', name:'Bike Insurance', amount: 500},
@@ -19,7 +21,30 @@ function Expenses(){
     ]
     return ( <div> 
         
-        
+        <h1> Expenses</h1>
+        <div className="create-expense">
+            <div className="create-expense-heading">Create</div>
+            <div className="create-expense-form">
+                <div className="create-expense-form-item">
+                    <div className="create-expense-form-label">Name</div>
+                    <div><input type="text" /></div>
+                </div>
+                <div className="create-expense-form-item">
+                    <div className="create-expense-form-label">Amount</div>
+                    <div><input type="number" /></div>
+                </div>
+
+                <div className="create-expense-form-item">
+                    <div className="create-expense-form-label">Date</div>
+                    <div><input type="date" /></div>
+                </div>
+                <div className="create-expense-form-actions">
+                    <div><button> Create </button></div>
+                    <div><button> Reset </button></div>
+                </div>
+
+            </div>
+        </div>
         <div className="expenses">
         <div className="expense-list header">
                 <div className="date">Date</div>
@@ -35,7 +60,7 @@ function Expenses(){
             </div>
             })}
 
-            
+
             {/* <div className="expense-list">
                 <div className="date">{data[0].date}</div>
                 <div className="name">{data[0].name}</div>
