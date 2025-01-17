@@ -1,9 +1,13 @@
 import { useState } from "react";
 import "./expenses.css";
+import ListExpenses from "./list-expense/list-expenses";
+import CreateExpenses from "./create-expense/create-expenses";
 
 function Expenses(){
 
-    const [name, setName] = useState('');
+    //primitve (string, number, boolean, null, undefined) & *by value
+    // non primitives (arrays & objects) * by reference
+    
     let data = [
         { date:'2025-01-23', name:'car Insurance', amount: 3500},
         { date:'2025-02-18', name:'Bike Insurance', amount: 500},
@@ -19,40 +23,26 @@ function Expenses(){
         { date:'2023-01-13', name:'Sofa2', amount: 78000},
         { date:'2023-01-13', name:'Sofa3', amount: 78000},
     ]
+    const [expenses, setExpenses] = useState(data);
+    const addExpenseIntoList = (obj) => {
+        setExpenses ( (preVal) => [ obj, ...preVal] ); 
+        // in JSP you will write DB connection and insert into DB
+        //you call an API which will insert values into DB
+    } 
     return ( <div> 
         
         <h1> Expenses</h1>
-        <div className="create-expense">
-            <div className="create-expense-heading">Create</div>
-            <div className="create-expense-form">
-                <div className="create-expense-form-item">
-                    <div className="create-expense-form-label">Name</div>
-                    <div><input type="text" /></div>
-                </div>
-                <div className="create-expense-form-item">
-                    <div className="create-expense-form-label">Amount</div>
-                    <div><input type="number" /></div>
-                </div>
+        <CreateExpenses addExpense = {addExpenseIntoList}/>
 
-                <div className="create-expense-form-item">
-                    <div className="create-expense-form-label">Date</div>
-                    <div><input type="date" /></div>
-                </div>
-                <div className="create-expense-form-actions">
-                    <div><button> Create </button></div>
-                    <div><button> Reset </button></div>
-                </div>
-
-            </div>
-        </div>
-        <div className="expenses">
+        <ListExpenses list={expenses}/>
+        {/* <div className="expenses">
         <div className="expense-list header">
                 <div className="date">Date</div>
                 <div className="name"> Name</div>
                 <div className="amount">Amount</div>
             </div>
 
-            {data.map((item)=>{
+            {expenses.map((item)=>{
                 return <div className="expense-list">
                 <div className="date">{item.date}</div>
                 <div className="name">{item.name}</div>
@@ -80,9 +70,9 @@ function Expenses(){
                 <div className="date">{data[3].date}</div>
                 <div className="name">{data[3].name}</div>
                 <div className="amount">{data[3].amount}</div>
-            </div> */}
+            </div> 
 
-        </div>
+        </div> */}
         
          </div>);
 
