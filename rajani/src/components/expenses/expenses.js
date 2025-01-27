@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./expenses.css";
 import ListExpenses from "./list-expense/list-expenses";
 import CreateExpenses from "./create-expense/create-expenses";
+import FilterExpenses from "./filter-expenses/filter-expenses";
 
 function Expenses(){
 
@@ -24,17 +25,30 @@ function Expenses(){
         { date:'2023-01-13', name:'Sofa3', amount: 78000},
     ]
     const [expenses, setExpenses] = useState(data);
+    const [filteredExpenses, setFilteredExpenses] = useState(data);
     const addExpenseIntoList = (obj) => {
-        setExpenses ( (preVal) => [ obj, ...preVal] ); 
+        setExpenses( (preVal) => [ obj, ...preVal] ); 
+        setFilteredExpenses( (preVal) => [ obj, ...preVal] ); 
         // in JSP you will write DB connection and insert into DB
         //you call an API which will insert values into DB
     } 
+    const filterByYear = (year) =>{
+        if(year === 'all'){
+            setFilteredExpenses(expenses)
+        } else {
+            let list = expenses.filter(obj =>{
+                let date = new Date(obj.date);
+                return (date.getFullYear().toString() === year)
+            });
+            setFilteredExpenses(list);
+        }
+    }
     return ( <div> 
         
         <h1> Expenses</h1>
         <CreateExpenses addExpense = {addExpenseIntoList}/>
-
-        <ListExpenses list={expenses}/>
+        <FilterExpenses filterYear={filterByYear}/>
+        <ListExpenses list={filteredExpenses}/>
         {/* <div className="expenses">
         <div className="expense-list header">
                 <div className="date">Date</div>

@@ -1,0 +1,21 @@
+.row-item{
+display: flex;
+border-bottom: 2px solid grey;
+padding: 7px 0;
+}
+.row-name{
+    width: 30%;
+}
+.row-gender{
+width: 10%;
+}
+.row-email{
+width: 40%;
+}
+.row-actions{
+    width: 20%;
+    }
+.header{
+    font-weight: bold;
+    
+}
