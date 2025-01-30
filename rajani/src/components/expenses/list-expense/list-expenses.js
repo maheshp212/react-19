@@ -1,6 +1,6 @@
 import "./list-expenses.css";
 
-function ListExpenses(props){
+function ListExpenses({list}){
     
     return ( <div> 
         
@@ -13,7 +13,7 @@ function ListExpenses(props){
                 <div className="amount">Amount</div>
             </div>
 
-            {props.list.map((item)=>{
+            {list.map((item)=>{
                 return <div className="expense-list">
                 <div className="date">{item.date}</div>
                 <div className="name">{item.name}</div>

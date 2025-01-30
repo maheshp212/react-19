@@ -9,8 +9,9 @@ nav{
     text-decoration: none;
     padding: 10px;
   }
-  nav a:hover{
+  nav a:hover, .active{
     background-color: #6F323C;;
     border-radius: 5px;
     text-decoration: underline;
   }
+  

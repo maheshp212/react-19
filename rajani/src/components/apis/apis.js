@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import "./apis.css";
 import axios from "axios";
+import domainHost from "../../config";
+
+console.log(domainHost);
+console.log(process.env.REACT_APP_API_BASE_URL);
+
 function Apis() {
 
     // on page load -- [] param
